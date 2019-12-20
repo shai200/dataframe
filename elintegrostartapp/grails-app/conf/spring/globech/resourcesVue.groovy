@@ -274,6 +274,7 @@ beans {
         //Vue parameters
         isGlobal = true
         dataframeButtons = [
+                Home:[name:"home",type:"link","flexGridValues":['xs12', 'sm6', 'md6', 'lg6', 'xl6'], ],
                 Register:[name:"register", type:"link", "flexGridValues":['xs12', 'sm6', 'md6', 'lg6', 'xl6'], showAsDialog: true, attr:"flat", script:""" this.vueRegisterDataframe_display = true;\n  drfExtCont.saveToStore('dataframeShowHideMaps','vueRegisterDataframe_display', true);\n""", refDataframe: ref("vueRegisterDataframe"), tooltip: [message: 'Register']],
                 Login:[name:"login", type:"link", attr:"flat", "flexGridValues":['xs12', 'sm6', 'md6', 'lg6', 'xl6'], showAsDialog: true,script:""" this.vueLoginDataframe_display = true; \n  drfExtCont.saveToStore('dataframeShowHideMaps','vueLoginDataframe_display', true);\n""", refDataframe: ref("vueLoginDataframe"), tooltip: [message: 'Login']]]
         currentFrameLayout = ref("loginLogoutNavigationLayout")

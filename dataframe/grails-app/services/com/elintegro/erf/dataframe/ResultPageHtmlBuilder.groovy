@@ -201,8 +201,8 @@ class ResultPageHtmlBuilder {
         String layoutName = disObj.layoutBeanName
         String formatPlaceholder = "["+layoutName + "]"
         if(disObj.isGlobal){
-            compBuilder.append("Vue.component('${layoutName.toLowerCase()}',{\n")
-            compBuilder.append("name: '${layoutName.toLowerCase()}',\n")
+            compBuilder.append("Vue.component('${layoutName}',{\n")
+            compBuilder.append("name: '${layoutName}',\n")
             disObj.componentRegistered = true
         }else{
             disObj.componentRegistered = false

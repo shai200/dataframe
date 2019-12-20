@@ -5,7 +5,9 @@ beans {
 	gcMainPageVue(PageDFRegistryVue){ bean ->
 		pageName = "gcMainPageVue";
         /**IMPORTANT: Need to put child dataframe bbefore parent dataframes*/
-		allDataframesList = [ "vueAppNameDataframe","vueRegisterDataframe", "vueMapWidgetDataframe","vueAddressDetailDataframe", "vueAddressEditDataframe",
+		allDataframesList = [
+								"vueInitDataframe","vueNavigationDataframe","vueToolbarTitleDataframe","vueMenuDataframe","vueBannerDataframe"
+				              /*"vueAppNameDataframe","vueRegisterDataframe","vueToolbarOfNavigationDataframe", "vueMapWidgetDataframe","vueAddressDetailDataframe", "vueAddressEditDataframe",
 							  "vueContactEditDataframe","vueContactDetailDataframe","vueContactManagementDetailDataframe","vueContactManagementEditDataframe",
 							  "vueEmployeeDetailDataframe", "vueEmployeeEditDataframe", "vueEmployeeGridDataframe",
 							  "vueProviderDetailDataframe", "vueProviderEditDataframe", "vueProviderGridDataframe",
@@ -20,11 +22,11 @@ beans {
 							  "vueApplicationManagementDataframe", "vueUserManagementMenuDataframe",
 							  "vueMedicationsDataframe", "vuePrescribedMedicationsDataframe","vueMedicationsGridDataframe", "vueMedicalRecordDataframe",
 							  "vueAddressDataframe", "vueContactDataframe", "vueApplicationFormDataframe","vueRecordEventDataframe", "vueEventManagementMenuDataframe","vueToolbarDataframe", "vueInitDataframe", "vueUserProfileDataframe",
-							  "vueProfileMenuDataframe", "vueAfterLoggedinDataframe", "vueAlertMsgDataframe", "vueLoginDataframe","vueLoginNavigation"
+							  "vueProfileMenuDataframe", "vueAfterLoggedinDataframe", "vueAlertMsgDataframe", "vueLoginDataframe","vueLoginNavigation"*/
 
-        ]
+        					]
 		dataframesToShowInMainPage = []
-		containerLayout = "vueContainerLayout" //outermost layout name
+		containerLayout = "vueElintegroContainerLayout" //outermost layout name
 	}
 
 }

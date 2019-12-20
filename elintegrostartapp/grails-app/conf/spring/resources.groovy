@@ -54,6 +54,9 @@ beans = {
     loadResource "globech/applicationManagement/resourcesApplicationForm.groovy"
     loadResource "globech/applicationManagement/resourcesApplicationManagement.groovy"
     loadResource "globech/userManagement/resourcesUserManagement.groovy"
+    loadResource "elintegroWebsite/resourcesElintegroVue.groovy"
+    loadResource "elintegroWebsite/resourcesElintegroLayoutVue.groovy"
+
     if (Environment.current == Environment.DEVELOPMENT){
 //        loadResource "resourcesEditor.groovy"
 //        editorBeanLoading(EditorBeanLoading){ bean -> }

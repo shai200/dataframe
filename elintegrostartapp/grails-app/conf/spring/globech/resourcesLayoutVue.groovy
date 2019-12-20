@@ -63,11 +63,10 @@ beans {
         layoutBeanName = bean.name
         layoutPlaceHolder = """<v-toolbar color="light-blue darken-2" dark  tabs style="z-index:99;">
                                    <v-toolbar-side-icon></v-toolbar-side-icon>
-                                   <v-toolbar-title class="display-1 thin  amber--text text--lighten-1" dark> <div v-if="this.\$store.state.vueInitDataframe.loggedIn"><vueappnamedataframe/></div><div v-else>Elintegro Start App</div></v-toolbar-title>
-                                   <v-spacer></v-spacer><vuetoolbardataframe/>
+                                   <v-toolbar-title class="display-1 thin  amber--text text--lighten-1" dark><div>Elintegro Software Factory </div></v-toolbar-title>
+                                   <v-spacer></v-spacer><vuetoolbarofnavigationdataframe/>
                                    <vueinitdataframe/>
-                                   
-                               </v-toolbar>"""
+                            </v-toolbar>"""
         isGlobal = true
     }
 
@@ -90,14 +89,24 @@ beans {
                                    </v-layout>
         </v-toolbar-items>"""*/
     }
+    toolbarOfNavigationLayout(RowLayoutVue){bean->
+        layoutBeanName = bean.name
+        layoutPlaceHolder = """<v-card style="height:inherit;" color="light-blue darken-2" flat>
+                                    <v-container fill-height grid-list-xl>
+                                        <v-layout row align-center justify-center>
+                                                [BUTTON_SCRIPT][REF_FIELD]
+                                        </v-layout>
+                                    </v-container>
+                              </v-card>"""
+    }
 
     loginLogoutNavigationLayout(ColumnLayoutVue){bean ->
         layoutBeanName = bean.name
         layoutPlaceHolder = """<v-card style="height:inherit;" color="light-blue darken-2" flat><v-container fill-height grid-list-xl><v-layout row align-center justify-center>[BUTTON_SCRIPT][REF_FIELD]</v-layout></v-container></v-card>"""
     }
 
-/*<v-tabs slot="extension" color="transparent" fixed-tabs slider-color="yellow">
-      <v-tab ripple href="#vueOwnerTreeDataframe-tab-id">My Properties</v-tab><v-tab ripple href="#vueUserProfileDataframe-tab-id">Financial Data</v-tab><v-tab ripple href="#vueUserProfileDataframe-tab-id">My Profile</v-tab></v-tabs>*/
+//<v-tabs slot="extension" color="transparent" fixed-tabs slider-color="yellow">
+//      <v-tab ripple href="#vueOwnerTreeDataframe-tab-id">My Properties</v-tab><v-tab ripple href="#vueUserProfileDataframe-tab-id">Financial Data</v-tab><v-tab ripple href="#vueUserProfileDataframe-tab-id">My Profile</v-tab></v-tabs>
     footerLayout(ColumnLayoutVue){bean ->
         layoutBeanName = bean.name
         layoutPlaceHolder = """<v-footer app>Copyright @ Elintegro Inc., Elintegro Start App project</v-footer>"""
@@ -123,7 +132,7 @@ beans {
                                         </v-flex>
                                         <v-flex xs2 order-lg3></v-flex>
                                         </v-layout></v-container></v-content></v-layout>"""
-        componentsToRegister = ["vueApplicationFormDataframe"]
+//        componentsToRegister = ["vueApplicationFormDataframe"]
         children = ["mainPageMessageLayout"]
         flexGridValues = ['xs12', 'sm6', 'md4', 'lg3', 'xl2']
     }
