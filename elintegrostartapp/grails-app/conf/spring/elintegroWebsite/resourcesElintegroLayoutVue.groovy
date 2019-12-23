@@ -25,12 +25,13 @@ beans {
     }
     navigationLayout(RowLayoutVue){bean ->
         layoutBeanName = bean.name
-        layoutPlaceHolder = """<v-toolbar color="white" flat>
-                                          <v-toolbar-side-icon></v-toolbar-side-icon>
-                                          <vueToolbarTitleDataframe/>
-                                          <vueMenuDataframe/>
-                                          <vueInitDataframe/>
-                              </v-toolbar>"""
+        layoutPlaceHolder = """
+                                <v-toolbar color="white" app flat>
+                                            <v-toolbar-side-icon class="hidden-md-and-up"@click.stop="drawer = !drawer"></v-toolbar-side-icon>
+                                                <vueToolbarTitleDataframe position="fixed;"/>
+                                                <vueMenuDataframe/>
+                                                <vueInitDataframe/>
+                                </v-toolbar>"""
         isGlobal = true
 
     }
@@ -38,6 +39,7 @@ beans {
         layoutBeanName = bean.name
         layoutPlaceHolder = """<v-toolbar-items>
                                      <v-flex align-end layout py-2>
+                                     [DATAFRAME_SCRIPT]
                                         [BUTTON_SCRIPT]
                                       </v-flex>
                               </v-toolbar-items>"""

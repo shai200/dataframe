@@ -1,607 +1,611 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
 <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Elintegro Software Factory</title>
+    <title>Elintegro Start App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="/elintegrostartapp/assets/vuejs/tooltip.css?compile=false" />
-
-    <script type="text/javascript" src="/elintegrostartapp/assets/jquery/jquery-1.11.2.js?compile=false" ></script>
-
-    <script type="text/javascript" src="/elintegrostartapp/assets/jquery/dateformat.js?compile=false" ></script>
-
-
-
-    <link rel="stylesheet" href="/elintegrostartapp/assets/vuejs/vue-material.css?compile=false" />
-
-    <link rel="stylesheet" href="/elintegrostartapp/assets/vuejs/vuetify.min.css?compile=false" />
-
-
-    <link rel="stylesheet" href="/elintegrostartapp/assets/vuejs/gc-vue.css?compile=false" />
-
-
+    <link rel="stylesheet" href="/assets/vuejs/tooltip.css?compile=false"/>
+    <script type="text/javascript" src="/assets/jquery/jquery-1.11.2.js?compile=false"></script>
+    <script type="text/javascript" src="/assets/jquery/dateformat.js?compile=false"></script>
+    <link rel="stylesheet" href="/assets/vuejs/vue-material.css?compile=false"/>
+    <link rel="stylesheet" href="/assets/vuejs/vuetify.min.css?compile=false"/>
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.9.97/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vuejs/gc-vue.css?compile=false"/>
 </head>
 <body>
 <style>
-.viewer-canvas{
+.viewer-canvas {
     background-color: black;
 }
-.v-table__overflow{
-    overflow-x: inherit;
+
+.v-table__overflow {
+    /*overflow-x: inherit;*/
     overflow-y: inherit;
+}
+
+.hidden {
+    display: none;
 }
 </style>
 <div id="dfr"></div>
-<div id='app'><v-app style="background-color:white;"><sectionLayout/></v-app></div>
-
-
-<script type="text/javascript" src="/elintegrostartapp/assets/vuejs/vue.js?compile=false" ></script>
-
-<script type="text/javascript" src="/elintegrostartapp/assets/vuejs/vuetify.js?compile=false" ></script>
-
-<script type="text/javascript" src="/elintegrostartapp/assets/vuejs/vue-router.js?compile=false" ></script>
-
+<div id='app'>
+    <v-app class="app" style="background-color:#fff;">
+        <sectionLayout/>
+    </v-app>
+</div>
+<script type="text/javascript" src="/assets/vuejs/vue.js?compile=false"></script>
+<script type="text/javascript" src="/assets/vuejs/vuetify.js?compile=false"></script>
+<script type="text/javascript" src="/assets/vuejs/vue-router.js?compile=false"></script>
+<script type="text/javascript" src="/assets/vuejs/vuex.js?compile=false"></script>
 <!--asset:javascript src="vuejs/vue-spring-security.min.js"/-->
 <!--script type="text/javascript" src="https://unpkg.com/vue-spring-security"></script-->
-
+<script src="//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
-
 <script src="https://unpkg.com/popper.js"></script>
 <script src="https://unpkg.com/v-tooltip"></script>
-<script type="text/javascript" src="/elintegrostartapp/assets/vuejs/v-dataframe.min.js?compile=false" ></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAAxHUhrxxl_2ZSpVtGeMX-1Fs83tunNU">
-</script>
-<script type="text/javascript" src="/elintegrostartapp/assets/erf/erfVueController.js?compile=false" ></script>
-
-<script type="text/javascript" src="/elintegrostartapp/assets/vuejs/vuex.js?compile=false" ></script>
-
+<script type="text/javascript" src="/assets/vuejs/v-eutil.min.js?compile=false"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAAxHUhrxxl_2ZSpVtGeMX-1Fs83tunNU"></script>
+<script type="text/javascript" src="/assets/erf/erfVueController.js?compile=false"></script>
+<script type="text/javascript" src="/assets/vuejs/vuex.js?compile=false"></script>
 <script>
     let store = new Vuex.Store({
-        state:{
-            dataframeShowHideMaps: {
+        state: {
+            dataframeShowHideMaps: {},
+            vueTechnologiesDataframe: {
+                key: '',
+                doRefresh: '',
             },
-            vueInitDataframe: {
-                key:''
-                ,},
-            vueNavigationDataframe: {
-                key:''
-                ,},
-            vueToolbarTitleDataframe: {
-                key:''
-                ,},
-            vueMenuDataframe: {
-                key:''
-                ,},
-            vueBannerDataframe: {
-                key:''
-                ,},
-            dataframeBuffer: {
+            vueElintegroNavigationButtonDataframe: {
+                key: '',
+                doRefresh: '',
             },
+            vueElintegroLogoDataframe: {
+                key: '',
+                doRefresh: '',
+            },
+            vueElintegroBannerDataframe: {
+                key: '',
+                doRefresh: '',
+            },
+            dataframeBuffer: {},
         },
-        mutations:{
-        },
+        mutations: {},
     })
-    Vue.component('vueInitDataframe',{
-        name: 'vueInitDataframe',
-        template:`<div><v-flex xs12 sm12 md12 lg12 xl12><v-form  ref='vueInitDataframe_form'><v-container grid-list-xl fluid><v-layout wrap>
- <div id='vueInitDataframe-errorContainer'></div>
-</v-layout></v-container></v-form></v-flex>
-</div>`,
-        data: function() {return {
-            namedParamKey:'',
-            params:{},
-        }
-        },
-        props: [
-            'vueInitDataframe_prop' ,
-        ],
-        created () {
-            vueInitDataframeVar = this;
-            this.checkIfPopupWindow();this.setInitPageValues();
-        },
-        methods:{
+    Vue.component('vueTechnologiesDataframe', {
+        name: 'vueTechnologiesDataframe',
+        template: `<v-flex xs12 sm12 md12 lg12 xl12><v-card round class='rounded-card' ><v-toolbar dark color="light-blue darken-2"><v-toolbar-title></v-toolbar-title>
+                                <v-spacer></v-spacer><v-tooltip bottom><v-btn icon target="_blank" slot="activator" @click.prevent="closeDataframe"><v-icon medium >close</v-icon>
+                                </v-btn><span>Close</span></v-tooltip></v-toolbar><v-flex xs12 sm12 md12 lg12 xl12><v-form  ref='vueTechnologiesDataframe_form'><v-container grid-list-xl fluid><v-layout wrap>
 
-            verifyInitDfr: function(){
+						<v-flex xs12 sm6 md6 lg4 xl4  ><v-img
+           id = "vueTechnologiesDataframe_java"
+          :src="vueTechnologiesDataframe_java"
 
-            },
-            closeDataframe: function(){
-                console.log("vueInitDataframe dataframe close button.");
-                if(this.$store.state.dataframeShowHideMaps){
-                    Vue.set(this.$store.state.dataframeShowHideMaps,"vueInitDataframe_display", false);
-                }
-            }
-            ,  checkIfPopupWindow: function(){
-                var url = window.location.href;
-//                           var t = url.searchParams.get("reloadPage");
-//                           if(url){
-//                               window.opener.location.reload();
-//                               close();
-//                           }
-            },
-            setInitPageValues:function(data){
+          :alt = "vueTechnologiesDataframe_java_alt"
+          aspect-ratio=""
 
-                axios.get('/elintegrostartapp/login/getUserInfo').then(function (responseData) {
-                    drfExtCont.saveToStore("vueInitDataframe", "key", '');
-                    drfExtCont.saveToStore("vueProfileMenuDataframe", "key", '');
-                    drfExtCont.saveToStore("vueInitDataframe", "loggedIn", responseData.data.loggedIn);
-                    drfExtCont.saveToStore("loggedIn", responseData.data.loggedIn);
-//                                                     vueInitDataframeVar.$store.state.vueInitDataframe = responseData.data;
-//                                                     Vue.set(vueInitDataframeVar.$store.state.vueInitDataframe, "key", '');
-//                                                     Vue.set(vueInitDataframeVar.$store.state.vueProfileMenuDataframe, "key", '');
-                    var loggedIn = responseData.data.loggedIn
-//                                                     vueInitDataframeVar.$store.state.loggedIn = loggedIn;
-                    var urlLocation = window.location.href;
-                    if(loggedIn == false){
-//                                                        vueInitDataframeVar.$router.push("/");this.location.reload();
-                    }
 
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            } ,
-
-
-        },
-    })
-
-    Vue.component('vueNavigationDataframe',{
-        name: 'vueNavigationDataframe',
-        template:`<v-toolbar color="white" flat tabs style = "z-index:99;">
-                                          <v-toolbar-side-icon></v-toolbar-side-icon>
-                                          <v-toolbar-title style="position:fixed;">
-                                                  <vueToolbarTitleDataframe/>
-                                          </v-toolbar-title>
-                                          <v-spacer></v-spacer>
-                                          <vueMenuDataframe/>
-                                          <vueInitDataframe/>
-                             </v-toolbar>`,
-        data: function() {return {
-            namedParamKey:'',
-            params:{},
-        }
-        },
-        props: [
-            'vueNavigationDataframe_prop' ,
-        ],
-        created () {
-            this.vueNavigationDataframe_fillInitData();
-            vueNavigationDataframeVar = this;
-        },
-        watch: {
-            vueNavigationDataframe_prop: {
-                deep:true,
-                handler: function(){
-                    this.vueNavigationDataframe_fillInitData();
-                }
-            },
-
-        },
-        methods:{
-
-            vueNavigationDataframe_fillInitData: function(){
-                if(this.namedParamKey == '' || this.namedParamKey == undefined){
-                    if(this.vueNavigationDataframe_prop && this.vueNavigationDataframe_prop.hasOwnProperty('key')){
-                        this.namedParamKey = "this.vueNavigationDataframe_prop.key?this.vueNavigationDataframe_prop.key:this.$store.state.vueNavigationDataframe.key";
-                    } else{
-                        this.namedParamKey = "this.$store.state.vueNavigationDataframe.key";
-                    }
-
-                }
-
-                var allParams = {};
-
-                allParams["id"] = eval(this.namedParamKey);
-
-                allParams['dataframe'] = 'vueNavigationDataframe';
-
-                axios.get('/elintegrostartapp/dataframe/ajaxValues', {
-                    params: allParams
-                }).then(function (responseData) {
-                    var response = responseData.data;
-                    if(response.data != null && response.data != '' && response.data  != undefined){
-                        vueNavigationDataframeVar.vueNavigationDataframe_populateJSONData(response.data);
-                    }
-
-                    const stateVar = "vueNavigationDataframeVar.$store.state";
-                    vueNavigationDataframeVar.updateStoreState(response, stateVar);
-                })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            },
-
-
-
-            updateStoreState: function(response, stateVar){
-
-                var dataframe = response.dataframe;
-                let stateVarDf = stateVar+"."+dataframe;
-                var response = response.data
-                let id = response.keys["id"];
-                let stateVarObj1 = eval(stateVarDf);
-
-                if(stateVarObj1){
-                    Vue.set(eval(' stateVarObj1'), 'key', id);
-                }
-                if(response.hasOwnProperty('additionalData') ) {
-                    Object.keys(response.additionalData).forEach(function (key) {
-                        var embDfr = response.additionalData[key];
-                        if (embDfr.hasOwnProperty('data')){
-                            if (embDfr.data.hasOwnProperty('additionalData') && embDfr.data.additionalData.data) {
-
-                                vueNavigationDataframeVar.updateStoreState(embDfr, stateVar)
-                            } else {
-                                dataframe = embDfr.dataframe;
-                                if(dataframe){
-
-                                    let stateVarDf =stateVar + "." + dataframe;
-                                    if(embDfr.data.hasOwnProperty('keys')){
-                                        let id = embDfr.data.keys["id"];
-                                        let stateVarObj2 = eval(stateVarDf);
-                                        if(stateVarObj2){
-                                            Vue.set(eval('stateVarObj2'), 'key', id);
-                                            let propKey = "vueNavigationDataframeVar." + dataframe + "_data";
-                                            Vue.set(eval(propKey), 'key', id);
-                                        }
-                                    }
-
-                                }
-                            }
-                        }
-
-                    });
-                }
-            },
-
-
-            vueNavigationDataframe_populateJSONData: function(response){
-            },
-
-            verifyInitDfr: function(){
-
-            },
-            closeDataframe: function(){
-                console.log("vueNavigationDataframe dataframe close button.");
-                if(this.$store.state.dataframeShowHideMaps){
-                    Vue.set(this.$store.state.dataframeShowHideMaps,"vueNavigationDataframe_display", false);
-                }
-            }
-            ,},
-    })
-
-    Vue.component('vueToolbarTitleDataframe',{
-        name: 'vueToolbarTitleDataframe',
-        template:`<div><v-flex xs12 sm12 md12 lg12 xl12><v-form  ref='vueToolbarTitleDataframe_form'><v-container grid-list-xl fluid><v-layout wrap>
-
-						<v-flex xs12 sm12 md12 lg12 xs12  ><v-img
-           id = "vueToolbarTitleDataframe_logo"
-          :src="vueToolbarTitleDataframe_logo"
-
-          :alt = "vueToolbarTitleDataframe_logo_alt"
-          aspect-ratio="2.75"
-
-           height=auto
-           width=180px
-          contain ></v-img></v-flex>
-	 <div id='vueInitDataframe-errorContainer'></div>
-</v-layout></v-container></v-form></v-flex>
-</div>`,
-        data: function() {return {
-            vueToolbarTitleDataframe_logo:'/elintegrostartapp/assets/logo.png',
-
-            vueToolbarTitleDataframe_logo_alt:'',
-            namedParamKey:'',
-            params:{},
-        }
-        },
-        props: [
-            'vueToolbarTitleDataframe_prop' ,
-        ],
-        created () {
-            vueToolbarTitleDataframeVar = this;
-        },
-        methods:{
-
-            verifyInitDfr: function(){
-
-            },
-            closeDataframe: function(){
-                console.log("vueToolbarTitleDataframe dataframe close button.");
-                if(this.$store.state.dataframeShowHideMaps){
-                    Vue.set(this.$store.state.dataframeShowHideMaps,"vueToolbarTitleDataframe_display", false);
-                }
-            }
-            ,},
-    })
-
-    Vue.component('vueMenuDataframe',{
-        name: 'vueMenuDataframe',
-        template:`<v-toolbar-items>
-                                        <v-card-actions><v-container fluid grid-list-lg pa-0><v-layout row justify-center  pa-2>
-<v-flex xs12 sm12 md4 lg4 xl4 > <v-btn href='null' class='text-capitalize ' flat id='vueMenuDataframe-Home' @click.prevent='vueMenuDataframe_Home' >Home</v-btn>
-</v-flex><v-flex xs12 sm12 md4 lg4 xl4 > <v-btn href='null' class='text-capitalize ' flat id='vueMenuDataframe-Clients_Projects' @click.prevent='vueMenuDataframe_Clients_Projects' >Clients_Projects</v-btn>
-</v-flex><v-flex xs12 sm12 md4 lg4 xl4 > <v-btn href='null' class='text-capitalize ' flat id='vueMenuDataframe-Technologies' @click.prevent='vueMenuDataframe_Technologies' >Technologies</v-btn>
-</v-flex><v-flex xs12 sm12 md4 lg4 xl4 > <v-btn href='null' class='text-capitalize ' flat id='vueMenuDataframe-Getting_Started' @click.prevent='vueMenuDataframe_Getting_Started' >Getting_Started</v-btn>
-</v-flex><v-flex xs12 sm12 md4 lg4 xl4 > <v-btn href='null' class='text-capitalize ' flat id='vueMenuDataframe-Carrers' @click.prevent='vueMenuDataframe_Carrers' >Carrers</v-btn>
-</v-flex><v-flex xs12 sm12 md4 lg4 xl4 > <v-btn href='null' class='text-capitalize ' flat id='vueMenuDataframe-Contact_Us' @click.prevent='vueMenuDataframe_Contact_Us' >Contact_Us</v-btn>
-</v-flex><v-flex xs12 sm12 md4 lg4 xl4 > <v-btn href='null' class='text-capitalize ' flat id='vueMenuDataframe-Login' @click.prevent='vueMenuDataframe_Login' >Login</v-btn>
-</v-flex><v-flex xs12 sm12 md4 lg4 xl4 > <v-btn href='null' class='text-capitalize ' flat id='vueMenuDataframe-Register' @click.prevent='vueMenuDataframe_Register' >Register</v-btn>
-</v-flex></v-layout></v-container></v-card-actions>
- <font color='red'><div id='vueMenuDataframe-errorContainer'></div></font>
-
-                                </v-toolbar-items>`,
-        data: function() {return {
-            namedParamKey:'',
-            params:{},
-        }
-        },
-        props: [
-            'vueMenuDataframe_prop' ,
-        ],
-        created () {
-            this.vueMenuDataframe_fillInitData();
-            vueMenuDataframeVar = this;
-        },
-        watch: {
-            vueMenuDataframe_prop: {
-                deep:true,
-                handler: function(){
-                    this.vueMenuDataframe_fillInitData();
-                }
-            },
-
-        },
-        methods:{
-
-            vueMenuDataframe_Home: function(){
-                var allParams = {'dataframe':'vueMenuDataframe'};
-
-
-            },
-
-
-            vueMenuDataframe_Clients_Projects: function(){
-                var allParams = {'dataframe':'vueMenuDataframe'};
-
-
-            },
-
-
-            vueMenuDataframe_Technologies: function(){
-                var allParams = {'dataframe':'vueMenuDataframe'};
-
-
-            },
-
-
-            vueMenuDataframe_Getting_Started: function(){
-                var allParams = {'dataframe':'vueMenuDataframe'};
-
-
-            },
-
-
-            vueMenuDataframe_Carrers: function(){
-                var allParams = {'dataframe':'vueMenuDataframe'};
-
-
-            },
-
-
-            vueMenuDataframe_Contact_Us: function(){
-                var allParams = {'dataframe':'vueMenuDataframe'};
-
-
-            },
-
-
-            vueMenuDataframe_Login: function(){
-                var allParams = {'dataframe':'vueMenuDataframe'};
-
-
-            },
-
-
-            vueMenuDataframe_Register: function(){
-                var allParams = {'dataframe':'vueMenuDataframe'};
-
-
-            },
-
-
-            vueMenuDataframe_fillInitData: function(){
-                if(this.namedParamKey == '' || this.namedParamKey == undefined){
-                    if(this.vueMenuDataframe_prop && this.vueMenuDataframe_prop.hasOwnProperty('key')){
-                        this.namedParamKey = "this.vueMenuDataframe_prop.key?this.vueMenuDataframe_prop.key:this.$store.state.vueMenuDataframe.key";
-                    } else{
-                        this.namedParamKey = "this.$store.state.vueMenuDataframe.key";
-                    }
-
-                }
-
-                var allParams = {};
-
-                allParams["id"] = eval(this.namedParamKey);
-
-                allParams['dataframe'] = 'vueMenuDataframe';
-
-                axios.get('/elintegrostartapp/dataframe/ajaxValues', {
-                    params: allParams
-                }).then(function (responseData) {
-                    var response = responseData.data;
-                    if(response.data != null && response.data != '' && response.data  != undefined){
-                        vueMenuDataframeVar.vueMenuDataframe_populateJSONData(response.data);
-                    }
-
-                    const stateVar = "vueMenuDataframeVar.$store.state";
-                    vueMenuDataframeVar.updateStoreState(response, stateVar);
-                })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            },
-
-
-
-            updateStoreState: function(response, stateVar){
-
-                var dataframe = response.dataframe;
-                let stateVarDf = stateVar+"."+dataframe;
-                var response = response.data
-                let id = response.keys["id"];
-                let stateVarObj1 = eval(stateVarDf);
-
-                if(stateVarObj1){
-                    Vue.set(eval(' stateVarObj1'), 'key', id);
-                }
-                if(response.hasOwnProperty('additionalData') ) {
-                    Object.keys(response.additionalData).forEach(function (key) {
-                        var embDfr = response.additionalData[key];
-                        if (embDfr.hasOwnProperty('data')){
-                            if (embDfr.data.hasOwnProperty('additionalData') && embDfr.data.additionalData.data) {
-
-                                vueMenuDataframeVar.updateStoreState(embDfr, stateVar)
-                            } else {
-                                dataframe = embDfr.dataframe;
-                                if(dataframe){
-
-                                    let stateVarDf =stateVar + "." + dataframe;
-                                    if(embDfr.data.hasOwnProperty('keys')){
-                                        let id = embDfr.data.keys["id"];
-                                        let stateVarObj2 = eval(stateVarDf);
-                                        if(stateVarObj2){
-                                            Vue.set(eval('stateVarObj2'), 'key', id);
-                                            let propKey = "vueMenuDataframeVar." + dataframe + "_data";
-                                            Vue.set(eval(propKey), 'key', id);
-                                        }
-                                    }
-
-                                }
-                            }
-                        }
-
-                    });
-                }
-            },
-
-
-            vueMenuDataframe_populateJSONData: function(response){
-            },
-
-            verifyInitDfr: function(){
-
-            },
-            closeDataframe: function(){
-                console.log("vueMenuDataframe dataframe close button.");
-                if(this.$store.state.dataframeShowHideMaps){
-                    Vue.set(this.$store.state.dataframeShowHideMaps,"vueMenuDataframe_display", false);
-                }
-            }
-            ,},
-    })
-
-    Vue.component('vueBannerDataframe',{
-        name: 'vueBannerDataframe',
-        template:`<div><v-flex xs12 sm12 md12 lg12 xl12><v-form  ref='vueBannerDataframe_form'><v-container grid-list-xl fluid><v-layout wrap>
-
-						<v-flex xs12 sm12 md12 lg12 xl12  ><v-img
-           id = "vueBannerDataframe_banner"
-          :src="vueBannerDataframe_banner"
-
-          :alt = "vueBannerDataframe_banner_alt"
-          aspect-ratio="2.75"
-
-           height=auto
 
            ></v-img></v-flex>
-	 <div id='vueInitDataframe-errorContainer'></div>
+
+						<v-flex xs12 sm6 md6 lg4 xl4  ><v-img
+           id = "vueTechnologiesDataframe_javascript"
+          :src="vueTechnologiesDataframe_javascript"
+
+          :alt = "vueTechnologiesDataframe_javascript_alt"
+          aspect-ratio=""
+
+
+
+           ></v-img></v-flex>
+
+						<v-flex xs12 sm6 md6 lg4 xl4  ><v-img
+           id = "vueTechnologiesDataframe_grails"
+          :src="vueTechnologiesDataframe_grails"
+
+          :alt = "vueTechnologiesDataframe_grails_alt"
+          aspect-ratio=""
+
+
+
+           ></v-img></v-flex>
+
+						<v-flex xs12 sm6 md6 lg4 xl4  ><v-img
+           id = "vueTechnologiesDataframe_vuejs"
+          :src="vueTechnologiesDataframe_vuejs"
+
+          :alt = "vueTechnologiesDataframe_vuejs_alt"
+          aspect-ratio=""
+
+
+
+           ></v-img></v-flex>
+
+						<v-flex xs12 sm6 md6 lg4 xl4  ><v-img
+           id = "vueTechnologiesDataframe_kafka"
+          :src="vueTechnologiesDataframe_kafka"
+
+          :alt = "vueTechnologiesDataframe_kafka_alt"
+          aspect-ratio=""
+
+
+
+           ></v-img></v-flex>
+
+						<v-flex xs12 sm6 md6 lg4 xl4  ><v-img
+           id = "vueTechnologiesDataframe_oracle"
+          :src="vueTechnologiesDataframe_oracle"
+
+          :alt = "vueTechnologiesDataframe_oracle_alt"
+          aspect-ratio=""
+
+
+
+           ></v-img></v-flex>
+
+						<v-flex xs12 sm6 md6 lg4 xl4  ><v-img
+           id = "vueTechnologiesDataframe_nodejs"
+          :src="vueTechnologiesDataframe_nodejs"
+
+          :alt = "vueTechnologiesDataframe_nodejs_alt"
+          aspect-ratio=""
+
+
+
+           ></v-img></v-flex>
+
+						<v-flex xs12 sm6 md6 lg4 xl4  ><v-img
+           id = "vueTechnologiesDataframe_kubernetes"
+          :src="vueTechnologiesDataframe_kubernetes"
+
+          :alt = "vueTechnologiesDataframe_kubernetes_alt"
+          aspect-ratio=""
+
+
+
+           ></v-img></v-flex>
+
+						<v-flex xs12 sm6 md6 lg4 xl4  ><v-img
+           id = "vueTechnologiesDataframe_mysql"
+          :src="vueTechnologiesDataframe_mysql"
+
+          :alt = "vueTechnologiesDataframe_mysql_alt"
+          aspect-ratio=""
+
+
+
+           ></v-img></v-flex>
+	 <div id='vueTechnologiesDataframe-errorContainer'></div>
 </v-layout></v-container></v-form></v-flex>
-</div>`,
-        data: function() {return {
-            vueBannerDataframe_banner:'/elintegrostartapp/assets/banner.jpg',
+<v-card-actions><v-container fluid grid-list-lg pa-0><v-layout row justify-center wrap pa-2>
+</v-layout></v-container></v-card-actions>
+ <font color='red'><div id='vueTechnologiesDataframe-errorContainer'></div></font>
+</v-card></v-flex>`,
+        data: function() {
+            return {
+                vueTechnologiesDataframe_java: '/elintegrostartapp/assets/java.PNG',
 
-            vueBannerDataframe_banner_alt:'banner',
-            namedParamKey:'',
-            params:{},
-        }
-        },
-        props: [
-            'vueBannerDataframe_prop' ,
-        ],
-        created () {
-            vueBannerDataframeVar = this;
-        },
-        methods:{
+                vueTechnologiesDataframe_java_alt: '',
+                vueTechnologiesDataframe_javascript: '/elintegrostartapp/assets/javascript.PNG',
 
-            verifyInitDfr: function(){
+                vueTechnologiesDataframe_javascript_alt: '',
+                vueTechnologiesDataframe_grails: '/elintegrostartapp/assets/grailsphoto.PNG',
+
+                vueTechnologiesDataframe_grails_alt: '',
+                vueTechnologiesDataframe_vuejs: '/elintegrostartapp/assets/vuejs.PNG',
+
+                vueTechnologiesDataframe_vuejs_alt: '',
+                vueTechnologiesDataframe_kafka: '/elintegrostartapp/assets/kafka.PNG',
+
+                vueTechnologiesDataframe_kafka_alt: '',
+                vueTechnologiesDataframe_oracle: '/elintegrostartapp/assets/oracle.PNG',
+
+                vueTechnologiesDataframe_oracle_alt: '',
+                vueTechnologiesDataframe_nodejs: '/elintegrostartapp/assets/nodejs.PNG',
+
+                vueTechnologiesDataframe_nodejs_alt: '',
+                vueTechnologiesDataframe_kubernetes: '/elintegrostartapp/assets/kubernetes.PNG',
+
+                vueTechnologiesDataframe_kubernetes_alt: '',
+                vueTechnologiesDataframe_mysql: '/elintegrostartapp/assets/mysql.PNG',
+
+                vueTechnologiesDataframe_mysql_alt: '',
+                namedParamKey: '',
+                params: {},
+            }
+        },
+        props: ['vueTechnologiesDataframe_prop', ],
+        created() {
+            vueTechnologiesDataframeVar = this;
+        },
+        computed: {
+
+            checkResetFormProp: function() {
+                if (this.$props.resetForm) {
+                    this.$refs.vueTechnologiesDataframe_form.reset()
+                }
+            },
+
+        },
+        methods: {
+
+            closeDataframe: function() {
+                console.log("vueTechnologiesDataframe dataframe close button.");
+                if (this.$store.state.dataframeShowHideMaps) {
+                    Vue.set(this.$store.state.dataframeShowHideMaps, "vueTechnologiesDataframe_display", false);
+                }
+            },
+        },
+    })
+
+    Vue.component('vueElintegroNavigationButtonDataframe', {
+        name: 'vueElintegroNavigationButtonDataframe',
+        template: `<v-flex><v-flex xs12 sm12 md12 lg12 xl12><v-form  ref='vueElintegroNavigationButtonDataframe_form'><v-container grid-list-xl fluid><v-layout wrap>
+ <div id='vueElintegroNavigationButtonDataframe-errorContainer'></div>
+</v-layout></v-container></v-form></v-flex>
+<v-card-actions><v-container fluid grid-list-lg pa-0><v-layout row justify-center  pa-2>
+<v-flex xs0 sm0 md0 lg0 xl0 > <v-btn href='null' class='text-capitalize ' text id='vueElintegroNavigationButtonDataframe-home' @click.prevent='vueElintegroNavigationButtonDataframe_home' >home</v-btn>
+</v-flex><v-flex xs0 sm0 md0 lg0 xl0 > <v-btn href='null' class='text-capitalize ' text id='vueElintegroNavigationButtonDataframe-clientsProjects' @click.prevent='vueElintegroNavigationButtonDataframe_clientsProjects' >Clients & Projects</v-btn>
+</v-flex><v-flex xs0 sm0 md0 lg0 xl0 > <v-btn href='/ElintegroWebsite/renderUrlData' class='text-capitalize ' text id='vueElintegroNavigationButtonDataframe-technologies' @click.prevent='vueElintegroNavigationButtonDataframe_technologies' >technologies</v-btn>
+</v-flex><v-flex xs0 sm0 md0 lg0 xl0 > <v-btn href='null' class='text-capitalize ' text id='vueElintegroNavigationButtonDataframe-gettingStarted' @click.prevent='vueElintegroNavigationButtonDataframe_gettingStarted' >Getting Started</v-btn>
+</v-flex><v-flex xs0 sm0 md0 lg0 xl0 > <v-btn href='null' class='text-capitalize ' text id='vueElintegroNavigationButtonDataframe-carrers' @click.prevent='vueElintegroNavigationButtonDataframe_carrers' >Careers</v-btn>
+</v-flex><v-flex xs0 sm0 md0 lg0 xl0 > <v-btn href='null' class='text-capitalize ' text id='vueElintegroNavigationButtonDataframe-contactUs' @click.prevent='vueElintegroNavigationButtonDataframe_contactUs' >Contact Us</v-btn>
+</v-flex><v-flex xs0 sm0 md0 lg0 xl0 > <v-btn href='null' class='text-capitalize ' text id='vueElintegroNavigationButtonDataframe-login' @click.prevent='vueElintegroNavigationButtonDataframe_login' >Login</v-btn>
+</v-flex><v-flex xs0 sm0 md0 lg0 xl0 > <v-btn href='null' class='text-capitalize ' text id='vueElintegroNavigationButtonDataframe-register' @click.prevent='vueElintegroNavigationButtonDataframe_register' >Register</v-btn>
+</v-flex></v-layout></v-container></v-card-actions>
+ <font color='red'><div id='vueElintegroNavigationButtonDataframe-errorContainer'></div></font>
+</v-flex> `,
+        data: function() {
+            return {
+                namedParamKey: '',
+                params: {},
+            }
+        },
+        props: ['vueElintegroNavigationButtonDataframe_prop', ],
+        created() {
+            vueElintegroNavigationButtonDataframeVar = this;
+        },
+        computed: {
+
+            checkResetFormProp: function() {
+                if (this.$props.resetForm) {
+                    this.$refs.vueElintegroNavigationButtonDataframe_form.reset()
+                }
+            },
+
+        },
+        methods: {
+
+            vueElintegroNavigationButtonDataframe_home: function() {
+                var allParams = {
+                    'dataframe': 'vueElintegroNavigationButtonDataframe'
+                };
 
             },
-            closeDataframe: function(){
-                console.log("vueBannerDataframe dataframe close button.");
-                if(this.$store.state.dataframeShowHideMaps){
-                    Vue.set(this.$store.state.dataframeShowHideMaps,"vueBannerDataframe_display", false);
+
+            vueElintegroNavigationButtonDataframe_clientsProjects: function() {
+                var allParams = {
+                    'dataframe': 'vueElintegroNavigationButtonDataframe'
+                };
+
+            },
+
+            vueElintegroNavigationButtonDataframe_technologies: function() {
+                var allParams = {
+                    'dataframe': 'vueElintegroNavigationButtonDataframe'
+                };
+
+                allParams['id'] = 1;
+
+                if (this.$refs.vueElintegroNavigationButtonDataframe_form.validate()) {
+                    axios({
+                        method: 'post',
+                        url: '/ElintegroWebsite/renderUrlData',
+                        params: allParams
+                    }).then(function(responseData) {
+                        var response = responseData.data
+                        if (response.success) {
+                            if (response.msg) {
+                                store.commit('alertMessage', {
+                                    'snackbar': true,
+                                    'alert_type': 'success',
+                                    'alert_message': response.msg
+                                });
+                            }
+
+                            let url = response.url;
+                            window.open("" + url, '_blank');
+
+                        } else {
+                            if (!response.error) {
+                            }
+                            if (response.msg) {
+                                store.commit('alertMessage', {
+                                    'snackbar': true,
+                                    'alert_type': 'error',
+                                    'alert_message': response.msg
+                                })
+                            }
+                        }
+                    }).catch(function(error) {
+                        console.log(error);
+                    });
                 }
-            }
-            ,},
+
+            },
+
+            vueElintegroNavigationButtonDataframe_gettingStarted: function() {
+                var allParams = {
+                    'dataframe': 'vueElintegroNavigationButtonDataframe'
+                };
+
+            },
+
+            vueElintegroNavigationButtonDataframe_carrers: function() {
+                var allParams = {
+                    'dataframe': 'vueElintegroNavigationButtonDataframe'
+                };
+
+            },
+
+            vueElintegroNavigationButtonDataframe_contactUs: function() {
+                var allParams = {
+                    'dataframe': 'vueElintegroNavigationButtonDataframe'
+                };
+
+            },
+
+            vueElintegroNavigationButtonDataframe_login: function() {
+                var allParams = {
+                    'dataframe': 'vueElintegroNavigationButtonDataframe'
+                };
+
+            },
+
+            vueElintegroNavigationButtonDataframe_register: function() {
+                var allParams = {
+                    'dataframe': 'vueElintegroNavigationButtonDataframe'
+                };
+
+            },
+
+            closeDataframe: function() {
+                console.log("vueElintegroNavigationButtonDataframe dataframe close button.");
+                if (this.$store.state.dataframeShowHideMaps) {
+                    Vue.set(this.$store.state.dataframeShowHideMaps, "vueElintegroNavigationButtonDataframe_display", false);
+                }
+            },
+        },
     })
 
-    Vue.component('navigationLayout',{
-        name: 'navigationLayout',
-        template:`<v-toolbar color="white" flat tabs style = "z-index:99;">
-                                          <v-toolbar-side-icon></v-toolbar-side-icon>
-                                          <v-toolbar-title style="position:fixed;">
-                                                  <vueToolbarTitleDataframe/>
-                                          </v-toolbar-title>
-                                          <v-spacer></v-spacer>
-                                          <vueMenuDataframe/>
-                                          <vueInitDataframe/>
-                             </v-toolbar>`,
-        components:{
+    Vue.component('vueElintegroLogoDataframe', {
+        name: 'vueElintegroLogoDataframe',
+        template: `<span><v-flex xs12 sm12 md12 lg12 xl12><v-form  ref='vueElintegroLogoDataframe_form'><v-container grid-list-xl fluid><v-layout wrap>
+
+						<v-flex xs12 sm12 md12 lg12 xl12  ><v-img
+           id = "vueElintegroLogoDataframe_logo"
+          :src="vueElintegroLogoDataframe_logo"
+
+          :alt = "vueElintegroLogoDataframe_logo_alt"
+          aspect-ratio=""
+
+           height=auto
+           width=200
+           contain  ></v-img></v-flex>
+	 <div id='vueElintegroLogoDataframe-errorContainer'></div>
+</v-layout></v-container></v-form></v-flex>
+</span>`,
+        data: function() {
+            return {
+                vueElintegroLogoDataframe_logo: '/assets/elintegro_logo.png',
+
+                vueElintegroLogoDataframe_logo_alt: '',
+                namedParamKey: '',
+                params: {},
+            }
+        },
+        props: ['vueElintegroLogoDataframe_prop', ],
+        created() {
+            vueElintegroLogoDataframeVar = this;
+        },
+        computed: {
+
+            checkResetFormProp: function() {
+                if (this.$props.resetForm) {
+                    this.$refs.vueElintegroLogoDataframe_form.reset()
+                }
+            },
+
+        },
+        methods: {
+
+            closeDataframe: function() {
+                console.log("vueElintegroLogoDataframe dataframe close button.");
+                if (this.$store.state.dataframeShowHideMaps) {
+                    Vue.set(this.$store.state.dataframeShowHideMaps, "vueElintegroLogoDataframe_display", false);
+                }
+            },
         },
     })
-    Vue.component('midSectionLayout',{
-        name: 'midSectionLayout',
-        template:`<div style="min-width: 1080px;">
-                                   <vueBannerDataframe/>
-                            </div>`,
-        components:{
+
+    Vue.component('vueElintegroBannerDataframe', {
+        name: 'vueElintegroBannerDataframe',
+        template: `<div><v-flex xs12 sm12 md12 lg12 xl12><v-form  ref='vueElintegroBannerDataframe_form'><v-container grid-list-xl fluid><v-layout wrap>
+
+						<v-flex xs12 sm12 md12 lg12 xl12  ><v-img
+           id = "vueElintegroBannerDataframe_banner"
+          :src="vueElintegroBannerDataframe_banner"
+
+          :alt = "vueElintegroBannerDataframe_banner_alt"
+          aspect-ratio=""
+
+
+
+           ></v-img></v-flex>
+	 <div id='vueElintegroBannerDataframe-errorContainer'></div>
+</v-layout></v-container></v-form></v-flex>
+<v-card-actions><v-container fluid grid-list-lg pa-0><v-layout row justify-center wrap pa-2>
+</v-layout></v-container></v-card-actions>
+ <font color='red'><div id='vueElintegroBannerDataframe-errorContainer'></div></font>
+</div>`,
+        data: function() {
+            return {
+                vueElintegroBannerDataframe_banner: '/assets/elintegro_banner.jpg',
+
+                vueElintegroBannerDataframe_banner_alt: '',
+                namedParamKey: '',
+                params: {},
+            }
         },
+        props: ['vueElintegroBannerDataframe_prop', ],
+        created() {
+            vueElintegroBannerDataframeVar = this;
+        },
+        computed: {
+
+            checkResetFormProp: function() {
+                if (this.$props.resetForm) {
+                    this.$refs.vueElintegroBannerDataframe_form.reset()
+                }
+            },
+
+        },
+        methods: {
+
+            closeDataframe: function() {
+                console.log("vueElintegroBannerDataframe dataframe close button.");
+                if (this.$store.state.dataframeShowHideMaps) {
+                    Vue.set(this.$store.state.dataframeShowHideMaps, "vueElintegroBannerDataframe_display", false);
+                }
+            },
+        },
+    })
+
+    Vue.component('navigationLayout', {
+        name: 'navigationLayout',
+        template: `<v-card  height="400">
+<v-app-bar flat color="white accent-4"  tabs style="z-index:99;">
+                                   <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+
+
+                                   <v-toolbar-title style="position:relative;" mx-1 ><vueElintegroLogoDataframe/></v-toolbar-title>
+
+                                   <v-spacer></v-spacer>
+                                   <vueElintegroNavigationButtonDataframe/>
+
+
+
+                               </v-app-bar>
+<v-navigation-drawer
+        v-model="drawer"
+        absolute
+        bottom
+        temporary
+      >
+        <v-list
+          nav
+          dense
+        >
+          <v-list-item-group
+            v-model="group"
+            active-class="deep-purple--text text--accent-4"
+          >
+            <v-list-item>
+              <v-list-item-title>Home</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-title>Clients & Projects</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-title>Technologies</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-title>Getting Started</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Careers</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Contact Us</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Login</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Register</v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
+<v-card-text>
+                                    <midSectionLayout/>
+
+</v-card-text>
+
+</v-card>`,
+
+        components: {},
+        data: () => ({
+            drawer: false,
+            group: null,
+        }),
+
+        watch: {
+            group () {
+                this.drawer = false
+            },
+        },
+    })
+    Vue.component('midSectionLayout', {
+        name: 'midSectionLayout',
+        template: `<div class="first-banner" style="min-width:1084px"><vueElintegroBannerDataframe/></div>`,
+        components: {},
     })
     var sectionLayoutComp = {
-        template:`<v-content>
-                                       <v-container fluid>
-                                           <navigationLayout/>
-                                           <midSectionLayout/>
-                                       </v-container>
+        template: `<v-content>
+                                  <v-container fluid pa-0>
+                                     <navigationLayout/>
+                                   </v-container>
                                </v-content>`,
-        components:{
-        },
+        components: {},
     }
     const router = new VueRouter({
-        routes: [
-        ]
+        routes: []
     })
-    var app = new Vue ({
-        el:'#app',
+    var app = new Vue({
+        el: '#app',
         router,
         store,
-        data(){ return {
-            drawer : null,
-        }
+        vuetify: new vuetify(),
+        data() {
+            return {
+                drawer: null,
+            }
         },
-        components:{
-            sectionlayout : sectionLayoutComp,
+        components: {
+            sectionlayout: sectionLayoutComp,
 
         },
-    })</script>
+    })
+</script>
+<script>
+
+    // import Vuetify from 'vuetify'
+    // Vue.use(Vuetify,{
+    //     rtl:true
+    // })
+</script>
 </body>
 </html>

@@ -4,6 +4,7 @@ import com.elintegro.erf.dataframe.vue.DataframeVue
 import grails.util.Holders
 
 beans {
+    def contextPath = Holders.grailsApplication.config.rootPath
 
     vueInitDataframe(DataframeVue){bean ->
         bean.parent = dataFrameSuper
@@ -32,8 +33,7 @@ beans {
         addFieldDef =[
                 "logo":[
                         "widget" : "PictureDisplayWidgetVue",
-                        "url": "/elintegrostartapp/assets/logo.png",
-                        "flexGridValues" : ['xs12','sm12','md12','lg12','xs12'],
+                        "url": "${contextPath}/assets/logo.png",
                         attr:"contain",
                         height:"auto",
                         width:"200px"
@@ -46,14 +46,16 @@ beans {
         bean.constructorArgs = ['vueMenuDataframe']
         saveButton = false
         dataframeButtons = [
-                            Home:[name:"Home",type:"link"],
-                            Clients_Projects:[name:"Clients & Projects",type:"link"],
-                            Technologies:[name:"Technologies",type:"link"],
-                            Getting_Started:[name:"Getting Started",type:"link"],
-                            Carrers:[name:"careers",type:"link"],
-                            Contact_Us:[name:"Contact Us",type: "link"],
-                            Login:[name:"login",type:"link"],
-                            Register:[name:"register",type: "link"]
+                            home:[name:"home",type:"link"],
+                            clientsProjects:[name:"clientsProjects",type:"link"],
+                            technologies:[name:"technologies",type:"link", url:"${contextPath}/ElintegroWeb/renderData",
+                            callBackParams:[successScript:"""let url = response.url; window.open("${contextPath}"+url,'_blank');
+                              """]],
+                            gettingStarted:[name:"gettingStarted",type:"link"],
+                            carrers:[name:"careers",type:"link"],
+                            contactUs:[name:"contactUs",type: "link"],
+                            login:[name:"login",type:"link"],
+                            register:[name:"register",type: "link"]
                             ]
         isGlobal = true
         wrapButtons = false
@@ -68,7 +70,7 @@ beans {
         addFieldDef =[
                 "banner":[
                         "widget" : "PictureDisplayWidgetVue",
-                        "url":"/elintegrostartapp/assets/banner.jpg",
+                        "url":"${contextPath}/assets/banner.jpg",
                         "alt":"banner",
                         "height": "auto",
                         "flexGridValues":['xs12', 'sm12', 'md12', 'lg12', 'xl12']

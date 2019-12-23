@@ -72,7 +72,7 @@ ${constructedPageHtml}
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=${grailsApplication.config.googleMapsApi.apiKey}">
 </script>
 <asset:javascript src="/erf/erfVueController.js"/>
-<asset:javascript src="/vuejs/vuex.js.js"/>
+<asset:javascript src="/vuejs/vuex.js"/>
 ${constructedPageScript}
 <script>
 

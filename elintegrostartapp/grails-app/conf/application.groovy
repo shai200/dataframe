@@ -271,7 +271,7 @@ environments {
 		grails.plugin.springsecurity.ui.register.emailFrom='elintegro@localhost'
 		dataSource {
 			logSql = true
-			dbCreate = 'create-drop' //"update" // one of 'create', 'create-drop','update'
+			dbCreate = 'update' //"update" // one of 'create', 'create-drop','update'
 //			dbCreate = 'update' //"update" // one of 'create', 'create-drop','update'
 			url = "jdbc:mysql://localhost:3306/elintegro_website_db_dev"
 			username = "developer"
@@ -291,7 +291,7 @@ environments {
 	develop {
 		dataSource {
 			//CHANGE DATASOURCE HERE
-			dbCreate = 'create-drop' //"update" // one of 'create', 'create-drop','update'
+			dbCreate = 'update' //"update" // one of 'create', 'create-drop','update'
 //			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
 			url = "jdbc:mysql://localhost:3306/elintegrostartapp_db" // todo:change after fix the server
 			username = "root"
