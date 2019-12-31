@@ -6,7 +6,7 @@ beans {
 		pageName = "gcMainPageVue";
         /**IMPORTANT: Need to put child dataframe bbefore parent dataframes*/
 		allDataframesList = [
-				"vueInitDataframe","vueSubContainerDataframe","vueElintegroBannerDataframe","vueTechnologiesDataframe","vueClientProjectDataframe","vueGettingStartedDataframe",
+				"vueInitDataframe","vueSubContainerDataframe","vueElintegroBannerDataframe","vueTechnologiesDataframe","vueClientProjectDataframe",
 				"vueGettingStartedDataframe","vueCareersDataframe","vueContactUsDataframe","vueLoginDataframe","vueRegisterDataframe",
 				"vueElintegroNavigationButtonDataframe","vueElintegroLogoDataframe",
         ]

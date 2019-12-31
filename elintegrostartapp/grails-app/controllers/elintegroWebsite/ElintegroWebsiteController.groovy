@@ -1,16 +1,14 @@
 package elintegroWebsite
-
-import grails.converters.JSON
-
 class ElintegroWebsiteController {
 
-    def index() { }
-    def technologiesButton()
-    {
-        render(view: "/elintegroWebsite/technologies")
+    def index(){}
+    def ContactUs(){
+        ContactUs contactUs = new ContactUs(params)
+        contactUs.name =params.get("vueContactUsPageDataframe-name")
+        contactUs.email = params.get("vueContactUsPageDataframe-email")
+        contactUs.phone = params.get("vueContactUsPageDataframe-phone")
+        contactUs.message = params.get("vueContactUsPageDataframe-message")
+        contactUs.save()
     }
 
-    def renderUrlData(){
-        render([success:true, url:"/elintegroWebsite/technologiesButton"] as JSON)
-    }
 }

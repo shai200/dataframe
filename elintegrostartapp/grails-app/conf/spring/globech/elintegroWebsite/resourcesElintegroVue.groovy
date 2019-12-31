@@ -1,6 +1,7 @@
 package spring.globech.elintegroWebsite
 
 import com.elintegro.erf.dataframe.vue.DataframeVue
+import com.elintegro.erf.widget.vue.InputWidgetVue
 import grails.util.Holders
 
 beans {
@@ -111,9 +112,6 @@ beans {
                 "clientProject": [
                         widget            : "GridWidgetVue"
                         , name            : "clientProject"
-
-
-
                         , hql             : """select clientProject.clientName as Clientname,
                                                 clientProject.projectName as Projectname, clientProject.logo as Logo, 
                                                 clientProject.description as Description,clientProject.linkToWebsite as LinkToWebsite from ClientProject clientProject"""
@@ -125,7 +123,6 @@ beans {
                 ]
         ]
         currentFrameLayout = ref("defaultRouteDataframeLayout")
-
     }
     vueTechnologiesDataframe(DataframeVue) { bean ->
         bean.parent = dataFrameSuper
@@ -180,9 +177,17 @@ beans {
         saveButton = false
         initOnPageLoad = false
         route = true
+        addFieldDef = [
+                "name":[widget: "InputWidgetVue", "placeHolder":"Please Enter your Name","validate":["rule":["v => !!v || 'Name is required'", "v => (v && v.length <= 30) || 'Name must be less than 30'"]]],
+                "email":[widget: "EmailWidgetVue", "placeHolder":"Enter your email address","validate":["rule":["v =>!!v ||'Email Required'"]]],
+                "phone":[widget: "PhoneNumberWidgetVue", "required": "required","validate":["rule":["v => !!v || 'Phone Number is required'"]]],
+                "message":[widget: "InputWidgetVue","placeHolder":"Your message here"],
+        ]
+        dataframeButtons = [submit:[name:"submit",type:"button",url: "${contextPath}/ElintegroWebsite/ContactUs"]]
 
 
-        currentFrameLayout = ref("defaultRouteDataframeLayout")
+
+        currentFrameLayout = ref("emptyDataframeLayout")
     }
     vueLoginDataframe(DataframeVue){bean ->
         bean.parent = dataFrameSuper

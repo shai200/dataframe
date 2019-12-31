@@ -21,7 +21,6 @@ beans {
         children = ["midSectionLayout"]
         flexGridValues = ['xs12', 'sm12', 'md12', 'lg12', 'xl12']
     }
-
     elintegroNavigationButtonLayout(RowLayoutVue){bean ->
         layoutBeanName = bean.name
         layoutPlaceHolder ="""<v-flex>[DATAFRAME_SCRIPT][BUTTON_SCRIPT]</v-flex> """
@@ -30,9 +29,7 @@ beans {
         layoutBeanName = bean.name
         layoutPlaceHolder = """<v-flex>
                                            <vueInitDataframe/>
-                                          
                                            <router-view :key="\$route.fullPath"></router-view>
-
                                            </v-flex>"""
         isGlobal = true
     }
@@ -40,36 +37,28 @@ beans {
         layoutBeanName = bean.name
         layoutPlaceHolder = """<v-flex><v-app-bar flat color="white"  tabs style="z-index:99;">
                                    <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-lg-and-up"></v-app-bar-nav-icon>
-                           
                                    <v-toolbar-title style="position:relative;" ><vueElintegroLogoDataframe/></v-toolbar-title>
-                                 
                                    <v-spacer></v-spacer>
-                                 
-      
                                         <div class="hidden-md-and-down"> <vueElintegroNavigationButtonDataframe/></div>
-    
-
-                               </v-app-bar>
-                               
-        <v-navigation-drawer
-        v-model="drawer"
-        app
-        temporary
-        width = "min-content"
-      >
-      <vueElintegroNavigationButtonDataframe/>
-       
-
-            
-      </v-navigation-drawer>
-                                 
-                                    <midSectionLayout/>
+                                           </v-app-bar>
+                                            <v-navigation-drawer
+                                            v-model="drawer"
+                                            app
+                                            temporary
+                                            width = "min-content"
+                                          >
+                                          <vueElintegroNavigationButtonDataframe/>
+                                           
+                                    
+                                                
+                                          </v-navigation-drawer>
+                                                                     
+                                                <midSectionLayout/>
                                
 
 
-</v-flex>
+                        </v-flex> """
 
-                                     """
     }
     /*
     buttonTechnologiesLayout(RowLayoutVue){bean ->

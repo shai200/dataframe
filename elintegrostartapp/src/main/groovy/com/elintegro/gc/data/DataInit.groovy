@@ -17,6 +17,9 @@ import com.elintegro.auth.Role
 import com.elintegro.auth.User
 import com.elintegro.auth.UserRole
 import com.elintegro.crm.Person
+import com.elintegro.crm.Phone
+import com.elintegro.erf.notification.impl.gateway.email.Email
+import com.elintegro.notification.Message
 import com.elintegro.ref.Address
 import com.elintegro.ref.Language
 import com.elintegro.elintegrostartapp.Facility
@@ -111,6 +114,7 @@ class DataInit {
 	static def initStructuresForRegisteredUser(User user) {
 		Person person = new Person(contactEmail: user.email, firstName: user.firstName, lastName: user.lastName, user: user).save(flush: true)
 	}
+
 	static def initElintegroClientProject(){
 		ClientProject clientProject = new ClientProject(clientName:"Globe Chalet" ,projectName:"Globe Chalet" ,logo:"clientsProjectImages/globeChalet.PNG" ,
 				description:"Software to manage Associations\n" +
